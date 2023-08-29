@@ -31,6 +31,6 @@ userRouter
   .post(postChangePassword);
 userRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin); //로그인된 사람은 `/`으로 리다이렉트
 userRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin); //로그인된 사람은 `/`으로 리다이렉트
-userRouter.get(":id", see);
+userRouter.get("/:id", see);
 
 export default userRouter;
