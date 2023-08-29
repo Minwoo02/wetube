@@ -158,6 +158,23 @@ export const postEdit = async (req, res) => {
     file,
   } = req;
   console.log(file);
+  //code challenge
+  const sessionUser = req.session.user;
+
+  if (sessionUser.email !== email && (await User.exists({ email }))) {
+    return res.status(400).render("edit-profile", {
+      pageTitle: "Edit Profile",
+      errorMessage: "This email is already taken.",
+    });
+  }
+
+  if (sessionUser.username !== username && (await User.exists({ username }))) {
+    return res.status(400).render("edit-profile", {
+      pageTitle: "Edit Profile",
+      errorMessage: "This username is already taken.",
+    });
+  }
+  //code Challenge/
   const updatedUser = await User.findByIdAndUpdate(
     //User model을 업데이트
     _id,
