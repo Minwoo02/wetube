@@ -13,6 +13,7 @@ import {
   uploadFiles,
   protectorMiddleware,
   publicOnlyMiddleware,
+  avatarUpload,
 } from "../middleware";
 
 const userRouter = express.Router();
@@ -22,7 +23,7 @@ userRouter
   .route("/edit")
   .all(protectorMiddleware) //로그인 되어있는 사람만 로그아웃에 접근할 수 있게
   .get(getEdit)
-  .post(uploadFiles.single("avatar"), postEdit);
+  .post(avatarUpload.single("avatar"), postEdit);
 userRouter
   .route("/change-password")
   .all(protectorMiddleware) //로그인 되어있는 사람만 로그아웃에 접근할 수 있게

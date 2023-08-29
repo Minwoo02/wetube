@@ -202,7 +202,7 @@ export const postEdit = async (req, res) => {
 export const getChangePassword = (req, res) => {
   if (req.session.user.socialOnly === true) {
     return res.redirect("/");
-  }
+  } //소셜로그인한 경우 비밀번호가 없기 때문에
   return res.render("users/change-password", { pageTitle: "Change Password" });
 };
 
