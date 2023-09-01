@@ -28,6 +28,7 @@ app.use(
 
 app.use(localsMiddleware); //session 미들웨어 다음에 와야함!
 app.use("/uploads", express.static("uploads")); //폴더를 브라우저에 노출!
+app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
